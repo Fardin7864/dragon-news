@@ -2,7 +2,7 @@ import logo from "../../assets/logo.png"
 import moment from "moment/moment";
 const Header = () => {
     return (
-        <div className=" mt-12">
+        <div className=" mt-12 mb-7 flex flex-col items-center">
             <div>
                 <img src={logo} alt="" />
             </div>
