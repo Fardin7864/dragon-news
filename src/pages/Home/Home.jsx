@@ -1,6 +1,7 @@
 import Header from "../../components/Header/Header";
 import Marquee from "react-fast-marquee";
 import Navbar from "../../components/Navbar/Navbar";
+import Category from "../../components/Category/Category";
 
 
 const Home = () => {
@@ -21,8 +22,8 @@ const Home = () => {
         <Navbar></Navbar>
       </div>
       <div className="grid lg:grid-cols-4 gap-6">
-        <div className="border-2">
-            left side bar
+        <div>
+            <Category></Category>
         </div>
         <div className="border-2 col-span-2">
             middle

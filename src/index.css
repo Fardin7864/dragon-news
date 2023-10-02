@@ -21,3 +21,10 @@ ul li a:focus{
     font-size: 18px !important;
     font-weight: 400 !important;
 }
+
+#category li a:focus{
+    text-decoration: underline !important;
+    color: #403F3F !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+}
