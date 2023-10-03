@@ -26,7 +26,7 @@ const Category = () => {
      
     return (
         <div>
-            <h3 className="text-xl text-center text-p font-bold mb-6 pl-4 flex justify-center items-center gap-4"><button onClick={handleManue} className="lg:hidden"><GiHamburgerMenu></GiHamburgerMenu></button>All Categorys</h3>
+            <h3 className="text-xl text-center text-p font-bold mb-6 pl-4 flex justify-center items-center gap-4"><button onClick={handleManue} className=""><GiHamburgerMenu></GiHamburgerMenu></button>All Categorys</h3>
             <ul id="category" style={hamManue}>
 
             {
