@@ -3,8 +3,7 @@ import News from "../News/News";
 
 const Newses = ({navNews}) => {
     const [newses, setNewses] = useState([]);
-    const [showAll, setShowAll] = useState([])
-    const [flag, setFlag] = useState(false);
+    const [showAll, setShowAll] = useState(false)
 
     useEffect(() => { 
         const data = async () =>{
@@ -19,22 +18,13 @@ const Newses = ({navNews}) => {
         data();
      },[])
 
-     let count = 5;
-     let toDisplayNews = newses.slice(0,count);
-     const handleShow = () => { 
-         count = count + 5;
-        console.log(count)
-        toDisplayNews = newses.slice(0,count);
-        setFlag(!flag)
-    }
-    useEffect(() => { 
-        setShowAll(toDisplayNews)
-     },[flag])
+     const toDisplayNews = !showAll ? newses.slice(0,5) : newses;
+
 
     return (
         <div>
             {
-                showAll.map(news =>
+                toDisplayNews.map(news =>
                    <News
                    key={news._id}
                    news={news}
@@ -43,7 +33,10 @@ const Newses = ({navNews}) => {
                     )
             }
             <div className="flex justify-center items-center mt-10">
-                 <button onClick={handleShow} className="btn btn-primary">More News</button>
+
+            {
+                !showAll && <button onClick={() => setShowAll(!showAll)} className="btn btn-primary">All News</button> || ''
+            }
             </div>
         </div>
     );

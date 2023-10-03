@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
@@ -11,6 +11,8 @@ const Login = () => {
         password: '',
         termsAndConditions: false,
       });
+      const location = useLocation();
+      // console.log(location)
       const [error, setError] = useState();
       const {logInwithEmailandPass} = useContext(AuthContext);
       const navigate = useNavigate();
@@ -33,7 +35,8 @@ const Login = () => {
         }else{
             logInwithEmailandPass(formData.email, formData.password)
             .then(() => {
-                navigate('/')
+                navigate(location?.state ? location.state : '/')
+              
             })
             .catch(err => {
                 if (err.message === 'Firebase: Error (auth/network-request-failed).') {

@@ -24,9 +24,9 @@ const Signup = () => {
       [name]: newValue,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError('')
     if (formData.password.length < 6) {
         setError('Password have to 6 charectar or more!')
     }else{
@@ -35,8 +35,11 @@ const Signup = () => {
             navigate('/')
         })
         .catch(err => {
+          console.log(err.message)
             if (err.message === 'Firebase: Error (auth/network-request-failed).') {
                 setError('Please check Your Network!!')
+            }else if (err.message === 'Firebase: Error (auth/email-already-in-use).') {
+              setError("This email address already used!")
             }
         })
     }
@@ -49,7 +52,7 @@ const Signup = () => {
 
   return (
     <>
-    <Navbar></Navbar>
+    <Navbar formData={formData}></Navbar>
     <div className="min-h-screen flex items-center justify-center bg-gray-100 pt-20">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>

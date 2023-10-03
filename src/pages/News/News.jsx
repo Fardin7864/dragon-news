@@ -50,7 +50,7 @@ const News = () => {
           </div>
           <div>
           <h3 className="text-xl text-p font-bold mb-5 mt-8 pl-4">Editors Insight</h3>
-            <div className="flex gap-4 flex-wrap px-14 md:px-0">
+            <div className="flex gap-4 lg:flex-nowrap flex-wrap px-14 md:px-0">
                 {
                     newses.slice(0,3).map(news => <Leftnews
                     key={news._id}

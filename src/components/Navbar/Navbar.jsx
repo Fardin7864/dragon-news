@@ -6,8 +6,19 @@ import { AuthContext } from "../../providers/AuthProvider";
 const Navbar = () => {
   const {user,logOut} = useContext(AuthContext);
 
-  const profilePic = user?.photoURL? <div className="w-8 h-8"><img src={user.photoURL} alt="" className="rounded-full"/></div> : <BsPersonCircle className="text-3xl"></BsPersonCircle>
-
+  let profilePic = user?.photoURL? <div className="w-8 h-8"><img src={user.photoURL} alt="" className="rounded-full"/></div> : <BsPersonCircle className="text-3xl"></BsPersonCircle>
+  // let profilePic = '';
+  // user?.photoURL?  : 
+// console.log(formData)
+//   if (user?.photoURL === null) {
+//     profilePic = <div className="w-8 h-8"><img src={formData?.formData?.photoURL} alt="" className="rounded-full"/></div>
+//   }
+//   else if (!user) {
+//     profilePic = <BsPersonCircle className="text-3xl"></BsPersonCircle>
+//   }
+//   else if (user?.photoURL != null) {
+//     profilePic = <div className="w-8 h-8"><img src={user.photoURL} alt="" className="rounded-full"/></div>
+//   }
   const handleLogout = () => { 
       logOut();
    }
