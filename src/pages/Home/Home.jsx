@@ -4,9 +4,18 @@ import Navbar from "../../components/Navbar/Navbar";
 import Category from "../../components/Category/Category";
 import RightNav from "../../components/RightNav/RightNav";
 import adimg from "../../assets/bg.png"
+import Newses from "../../components/Newses/Newses";
+import { useState } from "react";
+import Leftnews from "../../components/LeftNew/Leftnews";
 
 
 const Home = () => {
+
+  const [navNewses, setNavNews] = useState([]);
+  const navNews = (val) =>{
+    setNavNews(val)
+  }
+  const sideNewses = navNewses?.slice(0,3);
   return (
     <div>
       <Header></Header>
@@ -25,13 +34,26 @@ const Home = () => {
       </div>
       {/* main body */}
       <div className="grid lg:grid-cols-4 gap-6">
+        {/* left nev */}
         <div>
             <Category></Category>
+            {
+              sideNewses.map(news => 
+                <Leftnews
+                key={news._id}
+                news = {news}
+                ></Leftnews>)
+            }
         </div>
-        <div className="border-2 col-span-2">
-            middle
+        {/* All news */}
+        <div className="col-span-2">
+        <h3 className="text-p text-xl font-bold pl-4">Dragon News Home</h3> 
+        <div>
+          <Newses navNews={navNews}></Newses>
         </div>
-        <div className="border-2">
+        </div>
+        {/* Right nev */}
+        <div>
             <RightNav></RightNav>
             <div className="mt-5 w-full">
               <div>

@@ -13,10 +13,9 @@ const Category = () => {
         }
         url();
      },[])
-     console.log(categorys)
     return (
         <div>
-            <h3 className="text-xl text-center">All Categorys</h3>
+            <h3 className="text-xl text-center text-p font-bold mb-6 pl-4">All Categorys</h3>
             <ul id="category">
 
             {
