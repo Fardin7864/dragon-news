@@ -12,6 +12,7 @@ import {
 } from "react-icons/ai";
 import Rating from "react-rating";
 import { BsArrowLeft } from "react-icons/bs";
+import Leftnews from "../../components/LeftNew/Leftnews";
 
 const News = () => {
   const id = useParams();
@@ -46,6 +47,17 @@ const News = () => {
             <Link to="/" >
             <button className="btn hover:bg-[#D72050] hover:bg-opacity-70 w-80 mb-8 bg-[#D72050] text-white flex items-center justify-center gap-3"><BsArrowLeft className="text-xl"></BsArrowLeft> All Category News</button>
             </Link>
+          </div>
+          <div>
+          <h3 className="text-xl text-p font-bold mb-5 mt-8 pl-4">Editors Insight</h3>
+            <div className="flex gap-4">
+                {
+                    newses.slice(0,3).map(news => <Leftnews
+                    key={news._id}
+                    news={news}
+                    ></Leftnews>)
+                }
+            </div>
           </div>
         </div>
         <div className="-mt-8">

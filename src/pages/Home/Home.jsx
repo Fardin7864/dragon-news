@@ -33,17 +33,19 @@ const Home = () => {
         <Navbar></Navbar>
       </div>
       {/* main body */}
-      <div className="grid lg:grid-cols-4 gap-6">
+      <div className="grid lg:grid-cols-4 gap-6 px-5">
         {/* left nev */}
         <div>
             <Category></Category>
-            {
+           <div className="hidden lg:block">
+           {
               sideNewses.map(news => 
                 <Leftnews
                 key={news._id}
                 news = {news}
                 ></Leftnews>)
             }
+           </div>
         </div>
         {/* All news */}
         <div className="col-span-2">
