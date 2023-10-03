@@ -3,6 +3,8 @@ import News from "../News/News";
 
 const Newses = ({navNews}) => {
     const [newses, setNewses] = useState([]);
+    const [showAll, setShowAll] = useState([])
+    const [flag, setFlag] = useState(false);
 
     useEffect(() => { 
         const data = async () =>{
@@ -17,11 +19,22 @@ const Newses = ({navNews}) => {
         data();
      },[])
 
+     let count = 5;
+     let toDisplayNews = newses.slice(0,count);
+     const handleShow = () => { 
+         count = count + 5;
+        console.log(count)
+        toDisplayNews = newses.slice(0,count);
+        setFlag(!flag)
+    }
+    useEffect(() => { 
+        setShowAll(toDisplayNews)
+     },[flag])
 
     return (
         <div>
             {
-                newses.map(news =>
+                showAll.map(news =>
                    <News
                    key={news._id}
                    news={news}
@@ -29,6 +42,9 @@ const Newses = ({navNews}) => {
                    </News> 
                     )
             }
+            <div className="flex justify-center items-center mt-10">
+                 <button onClick={handleShow} className="btn btn-primary">More News</button>
+            </div>
         </div>
     );
 };

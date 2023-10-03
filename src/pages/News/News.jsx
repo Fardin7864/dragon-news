@@ -34,9 +34,9 @@ const News = () => {
     : {};
 
   return (
-    <div>
+    <div className="px-5">
       <Header></Header>
-      <div className=" grid grid-cols-4 gap-4">
+      <div className=" grid grid-cols-1 lg:grid-cols-4 gap-4">
         <div className="col-span-3 ">
           <div className="px-5 border rounded-lg">
             <div className=" pb-8 pt-7">
@@ -45,12 +45,12 @@ const News = () => {
             <h3 className="text-xl font-bold text-p pt-4 pb-5">{title}</h3>
             <p className=" text-base text-[#706F6F] pb-5">{details}</p>
             <Link to="/" >
-            <button className="btn hover:bg-[#D72050] hover:bg-opacity-70 w-80 mb-8 bg-[#D72050] text-white flex items-center justify-center gap-3"><BsArrowLeft className="text-xl"></BsArrowLeft> All Category News</button>
+            <button className="btn hover:bg-[#D72050] hover:bg-opacity-70 lg:w-80 mb-8 bg-[#D72050] text-white flex items-center justify-center gap-3"><BsArrowLeft className="text-xl"></BsArrowLeft> All Category News</button>
             </Link>
           </div>
           <div>
           <h3 className="text-xl text-p font-bold mb-5 mt-8 pl-4">Editors Insight</h3>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap px-14 md:px-0">
                 {
                     newses.slice(0,3).map(news => <Leftnews
                     key={news._id}

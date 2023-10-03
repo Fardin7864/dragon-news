@@ -3,6 +3,8 @@ import Root from "../components/Root/Root";
 import Error from "../components/Error/Error";
 import Home from "../pages/Home/Home";
 import News from "../pages/News/News";
+import Signup from "../pages/SignUp/Signup";
+import Login from "../pages/Login/Login";
 
 const MainRoute = createBrowserRouter([
     {
@@ -17,6 +19,14 @@ const MainRoute = createBrowserRouter([
             {
                 path: '/news/:id',
                 element: <News></News>
+            },
+            {
+                path: '/signup',
+                element: <Signup></Signup>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             }
         ]
     }

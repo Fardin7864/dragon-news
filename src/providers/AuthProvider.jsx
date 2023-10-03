@@ -2,7 +2,7 @@ import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUse
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
@@ -12,7 +12,13 @@ const AuthProvider = ({children}) => {
     const facebook = new FacebookAuthProvider();
 
     const socialLogin = (provider) =>{
-       return signInWithPopup(auth, provider)
+        signInWithPopup(auth, provider)
+        .then()
+        .catch(err =>{
+            if (err.message === "Firebase: Error (auth/internal-error).") {
+                return alert("Please check your Internet !!")
+            }
+        })
     }
 
     const createUserWithEmail= (email, password) => { 
@@ -23,19 +29,18 @@ const AuthProvider = ({children}) => {
      }
 
     const logOut = () => { 
-        return signOut(auth)
+         signOut(auth)
+         .then()
+         .catch(err => console.log(err.message))
      }
 
      useEffect(() => { 
-        const unsubscribe = 
-            onAuthStateChanged(auth, (currentUser) => {
-                if (currentUser) {
-                  setUser(currentUser);
-                }
-              });
-        
-            return () => {unsubscribe()};
-      },[])
+        const unsubscribe =   onAuthStateChanged(auth, currentUser =>{
+            setUser(currentUser);
+          });
+    
+          return () => unsubscribe();
+      },[user])
 
      const authInfo = {
             user,
@@ -46,7 +51,6 @@ const AuthProvider = ({children}) => {
             createUserWithEmail,
             logOut,
             logInwithEmailandPass,
-
      }
     return (
         <AuthContext.Provider value={authInfo}>

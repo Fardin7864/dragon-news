@@ -1,7 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import {BsPersonCircle} from "react-icons/bs"
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const {user,logOut} = useContext(AuthContext);
+
+  const profilePic = user?.photoURL? <div className="w-8 h-8"><img src={user.photoURL} alt="" className="rounded-full"/></div> : <BsPersonCircle className="text-3xl"></BsPersonCircle>
+
+  const handleLogout = () => { 
+      logOut();
+   }
   const navLink = (
     <>
       <li>
@@ -52,8 +61,11 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <BsPersonCircle className="text-3xl"></BsPersonCircle>
-        <Link className="btn">Login</Link>
+        {
+          profilePic
+        }        
+        {user? (<button onClick={handleLogout} className="btn">Sign Out</button>) : <Link to="/login" className="btn">Log IN</Link>}
+        
       </div>
     </div>
   );
