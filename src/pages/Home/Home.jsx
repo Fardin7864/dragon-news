@@ -2,6 +2,7 @@ import Header from "../../components/Header/Header";
 import Marquee from "react-fast-marquee";
 import Navbar from "../../components/Navbar/Navbar";
 import Category from "../../components/Category/Category";
+import RightNav from "../../components/RightNav/RightNav";
 
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
         <button className="w-28 h-12 bg-[#D72050] text-[#FFF] text-xl font-medium leading-7">
           Latest
         </button>
-        <Marquee pauseOnHover={true} className=" text-p text-lg font-semibold">
+        <Marquee pauseOnHover={true} speed={100} className=" text-p text-lg font-semibold">
         Match Highlights: Germany vs Spain — as it happened ! Match Highlights: Germany vs Spain as...
         </Marquee>
       </div>
@@ -21,6 +22,7 @@ const Home = () => {
       <div>
         <Navbar></Navbar>
       </div>
+      {/* main body */}
       <div className="grid lg:grid-cols-4 gap-6">
         <div>
             <Category></Category>
@@ -29,7 +31,7 @@ const Home = () => {
             middle
         </div>
         <div className="border-2">
-            right
+            <RightNav></RightNav>
         </div>
       </div>
     </div>
